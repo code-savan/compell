@@ -1,10 +1,34 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import ProcessStep from './ProcessStep'
 
 const ProcessSheet = ({ isOpen, onClose }) => {
+  const sheetRef = useRef(null)
+
+  useEffect(() => {
+    if (isOpen) {
+      // Prevent body scroll when sheet is open
+      document.body.style.overflow = 'hidden'
+
+      // Handle Escape key
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          onClose()
+        }
+      }
+
+      document.addEventListener('keydown', handleEscape)
+      return () => {
+        document.removeEventListener('keydown', handleEscape)
+        document.body.style.overflow = ''
+      }
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen, onClose])
+
   const steps = [
     {
       stepNumber: 1,
@@ -54,35 +78,37 @@ const ProcessSheet = ({ isOpen, onClose }) => {
         onClick={onClose}
       />
 
-      {/* Sheet */}
+      {/* Sheet - Full width on mobile, 550px on desktop */}
       <div
-        className={`fixed top-0 right-0 h-full w-[550px] max-w-full bg-background z-50 overflow-y-auto transform transition-transform duration-500 ease-in-out ${
+        ref={sheetRef}
+        className={`fixed top-0 right-0 h-full w-full sm:w-[400px] md:w-[550px] bg-background z-50 overflow-y-auto transform transition-transform duration-500 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-8 sticky top-0 bg-background z-10">
+        <div className="flex items-center justify-between p-4 md:p-8 sticky top-0 bg-background z-10">
           <button
             onClick={onClose}
-            className="text-white hover:text-text-dim transition-colors"
+            className="text-white hover:text-text-dim transition-colors p-2 -ml-2"
+            aria-label="Close sheet"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </button>
-          <span className="text-white text-sm tracking-[0.2em] uppercase">
+          <span className="text-white text-xs md:text-sm tracking-[0.2em] uppercase">
             OUR PROCESS
           </span>
         </div>
 
         {/* Content */}
-        <div className="px-8 pb-16">
+        <div className="px-4 md:px-8 pb-16">
           {/* Main Heading */}
-          <h2 className="text-white text-2xl md:text-3xl text-center leading-snug mb-12">
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl text-center leading-snug mb-8 md:mb-12">
             Our 6-Step Build,<br />
             Scale  & Sell System.
           </h2>
 
           {/* Steps */}
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-8 md:gap-12">
             {steps.map((step, index) => (
               <ProcessStep
                 key={index}

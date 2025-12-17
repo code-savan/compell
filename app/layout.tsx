@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Compell Solutions",
   description: "We Build, Scale, and Sell Apps — and Create Powerful Software & Digital Products for Companies That Need Efficiency, Growth, and Innovation.",
   icons: {
-    icon: "/logo.png",
+    icon: "/logo.svg",
   },
 };
 

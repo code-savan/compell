@@ -17,20 +17,20 @@ const WhatWeDo = () => {
   ]
 
   return (
-    <section className="section-solid w-full py-20 px-8 md:px-16">
+    <section className="section-solid w-full py-12 md:py-20 px-4 sm:px-8 md:px-16">
       <div className="max-w-6xl mx-auto">
         {/* Top Section - Text on Left */}
-        <div className="mb-12">
-          <h2 className="text-white text-sm tracking-[0.2em] uppercase mb-6">
+        <div className="mb-8 md:mb-12">
+          <h2 className="text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 md:mb-6">
             WHAT WE DO
           </h2>
-          <p className="text-text-dim text-sm md:text-base leading-relaxed max-w-sm">
+          <p className="text-text-dim text-xs sm:text-sm md:text-base leading-relaxed max-w-sm">
             We merge technology, design, and business consulting into one powerful offering.
           </p>
         </div>
 
         {/* Images Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
           {images.map((image, index) => (
             <div
               key={index}
@@ -48,11 +48,11 @@ const WhatWeDo = () => {
         </div>
 
         {/* Bullet Points */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 md:gap-3">
           {bulletPoints.map((point, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <span className="text-white mt-1">•</span>
-              <span className="text-white text-sm md:text-base">
+            <div key={index} className="flex items-start gap-2 sm:gap-3">
+              <span className="text-white mt-0.5 md:mt-1">•</span>
+              <span className="text-white text-xs sm:text-sm md:text-base">
                 {point}
               </span>
             </div>

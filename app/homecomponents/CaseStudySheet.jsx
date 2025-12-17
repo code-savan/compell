@@ -51,38 +51,39 @@ const CaseStudySheet = ({
         onClick={onClose}
       />
 
-      {/* Sheet */}
+      {/* Sheet - Full width on mobile, 80% on desktop */}
       <div
         ref={sheetRef}
         tabIndex={-1}
-        className={`fixed top-0 right-0 h-full w-[80%] max-w-[1200px] bg-background z-50 overflow-hidden shadow-2xl outline-none transition-transform duration-500 ease-out ${
+        className={`fixed top-0 right-0 h-full w-full md:w-[80%] md:max-w-[1200px] bg-background z-50 overflow-hidden shadow-2xl outline-none transition-transform duration-500 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex h-full">
+        {/* Mobile: Stack vertically, Desktop: Side by side */}
+        <div className="flex flex-col md:flex-row h-full">
           {/* Left Side - Project Info */}
-          <div className="w-[40%] p-8 md:p-12 flex flex-col overflow-y-auto">
+          <div className="w-full md:w-[40%] p-4 md:p-8 lg:p-12 flex flex-col overflow-y-auto flex-shrink-0">
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="text-white hover:text-text-dim transition-colors mb-8 self-start"
+              className="text-white hover:text-text-dim transition-colors mb-4 md:mb-8 self-start p-2 -ml-2"
               aria-label="Close case study"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             {/* Project Name */}
-            <h2 className="text-white text-xl md:text-2xl tracking-[0.15em] uppercase font-medium mb-6">
+            <h2 className="text-white text-lg md:text-xl lg:text-2xl tracking-[0.15em] uppercase font-medium mb-4 md:mb-6">
               {project.name}
             </h2>
 
             {/* Short Description */}
-            <p className="text-white text-base leading-relaxed mb-6">
+            <p className="text-white text-sm md:text-base leading-relaxed mb-4 md:mb-6">
               {project.description}
             </p>
 
             {/* Detailed Description */}
-            <p className="text-text-dim text-sm leading-relaxed mb-8">
+            <p className="text-text-dim text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
               {project.detailedDescription}
             </p>
 
@@ -91,8 +92,8 @@ const CaseStudySheet = ({
           </div>
 
           {/* Right Side - Image Gallery */}
-          <div className="w-[60%] overflow-y-auto p-4 md:p-6">
-            <div className="flex flex-col gap-4">
+          <div className="w-full md:w-[60%] overflow-y-auto p-4 md:p-6 flex-1">
+            <div className="flex flex-col gap-3 md:gap-4">
               {/* Row 1: One square div */}
               <div
                 className="w-full aspect-square flex items-center justify-center"
@@ -102,15 +103,15 @@ const CaseStudySheet = ({
                   <Image
                     src={project.logo}
                     alt={project.logoAlt || project.name}
-                    width={150}
-                    height={150}
-                    className="object-contain"
+                    width={120}
+                    height={120}
+                    className="object-contain w-24 h-24 md:w-36 md:h-36"
                   />
                 )}
               </div>
 
               {/* Row 2: Two columns */}
-              <div className="flex gap-4">
+              <div className="flex gap-3 md:gap-4">
                 <div
                   className="w-1/2 aspect-square"
                   style={{ backgroundColor: project.gallery?.[0]?.bg || '#FFFFFF' }}
@@ -178,7 +179,7 @@ const CaseStudySheet = ({
               </div>
 
               {/* Row 5: Two columns (70% / 30%) */}
-              <div className="flex gap-4">
+              <div className="flex gap-3 md:gap-4">
                 <div
                   className="w-[70%] aspect-[16/9]"
                   style={{ backgroundColor: project.gallery?.[4]?.bg || '#FFB769' }}

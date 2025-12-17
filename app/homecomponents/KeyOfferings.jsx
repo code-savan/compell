@@ -52,7 +52,7 @@ const KeyOfferings = () => {
     {
       id: "custom-software",
       title: "Custom Software Development for Companies",
-      image: "/service1.png",
+      image: "/service2.png",
       imageAlt: "Custom software development",
       description: "We create tailored software solutions designed to solve specific business challenges.",
       offerings: [
@@ -67,7 +67,7 @@ const KeyOfferings = () => {
     {
       id: "app-scaling",
       title: "App Scaling & Growth Services",
-      image: "/service1.png",
+      image: "/service3.png",
       imageAlt: "App scaling services",
       description: "We help businesses scale their applications to handle growth and increased demand.",
       offerings: [
@@ -82,7 +82,7 @@ const KeyOfferings = () => {
     {
       id: "consulting",
       title: "Consulting & Digital Strategy",
-      image: "/service1.png",
+      image: "/service4.png",
       imageAlt: "Digital consulting",
       description: "We provide expert guidance to help businesses navigate digital transformation.",
       offerings: [
@@ -97,7 +97,7 @@ const KeyOfferings = () => {
     {
       id: "white-label",
       title: "White-Label Apps",
-      image: "/service1.png",
+      image: "/service5.png",
       imageAlt: "White-label applications",
       description: "We build customizable white-label solutions that businesses can brand as their own.",
       offerings: [
@@ -130,31 +130,31 @@ const KeyOfferings = () => {
     <section ref={sectionRef} className="section-solid w-full min-h-screen">
       <div className="flex flex-col lg:flex-row">
         {/* Left Side - Sticky */}
-        <div className="lg:w-[45%] lg:sticky lg:top-0 lg:h-screen p-8 md:p-16 flex flex-col justify-between">
+        <div className="lg:w-[45%] lg:sticky lg:top-0 lg:h-screen p-4 sm:p-8 md:p-16 flex flex-col justify-between">
           <div>
             {/* Section Heading */}
-            <h2 className="text-white text-sm tracking-[0.2em] uppercase mb-6">
+            <h2 className="text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6">
               KEY OFFERINGS
             </h2>
 
             {/* Description */}
-            <p className="text-text-dim text-base leading-relaxed mb-8 max-w-sm">
+            <p className="text-text-dim text-sm md:text-base leading-relaxed mb-6 md:mb-8 max-w-sm">
               The core services and solutions we use to build, scale, and strengthen digital products.
             </p>
 
             {/* CTA Button */}
-            <div className="mb-16">
+            <div className="mb-8 md:mb-16">
               <GetInTouchButton />
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="flex flex-col gap-4">
+          {/* Navigation Links - Hidden on mobile, shown on lg */}
+          <nav className="hidden lg:flex flex-col gap-4">
             {navItems.map((item, index) => (
               <button
                 key={index}
                 onClick={() => scrollToOffering(item.target)}
-                className="text-left text-white text-base underline underline-offset-4 hover:text-text-dim transition-colors duration-300"
+                className="text-left text-white text-sm md:text-base underline underline-offset-4 hover:text-text-dim transition-colors duration-300"
               >
                 {item.label}
               </button>
@@ -163,7 +163,7 @@ const KeyOfferings = () => {
         </div>
 
         {/* Right Side - Scrolling Cards */}
-        <div className="lg:w-[55%] flex flex-col gap-6 p-8 md:p-16 lg:pl-0">
+        <div className="lg:w-[55%] flex flex-col gap-4 sm:gap-6 p-4 sm:p-8 md:p-16 lg:pl-0">
           {offerings.map((offering, index) => (
             <OfferingCard
               key={index}
@@ -178,15 +178,15 @@ const KeyOfferings = () => {
         </div>
       </div>
 
-      {/* Our Process Button - Only visible in this section */}
+      {/* Our Process Button - Mobile: bottom center, Desktop: bottom right */}
       <button
         onClick={() => setIsProcessOpen(true)}
-        className={`flex items-center justify-center fixed bottom-16 right-16 bg-[#027FFF] hover:bg-[#0066CC] transition-all duration-300 p-[10px] rounded-sm gap-[10px] shadow-lg cursor-pointer z-30 ${
+        className={`flex items-center justify-center fixed bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-16 md:right-16 bg-[#027FFF] hover:bg-[#0066CC] transition-all duration-300 p-2 sm:p-[10px] rounded-sm gap-1.5 sm:gap-[10px] shadow-lg cursor-pointer z-30 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
       >
-        <span className='text-white uppercase text-sm tracking-wide font-semibold'>Our Process</span>
-        <ArrowUpRight className='w-4 h-4 text-white' />
+        <span className='text-white uppercase text-xs sm:text-sm tracking-wide font-semibold'>Our Process</span>
+        <ArrowUpRight className='w-3 h-3 sm:w-4 sm:h-4 text-white' />
       </button>
 
       <ProcessSheet

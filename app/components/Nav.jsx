@@ -25,6 +25,11 @@ const Nav = ({ activePage = 'HOME' }) => {
     }
   }
 
+  const toggleExpanded = (e) => {
+    e.stopPropagation()
+    setIsExpanded(!isExpanded)
+  }
+
   return (
     <nav
       onMouseEnter={() => setIsExpanded(true)}
@@ -35,28 +40,26 @@ const Nav = ({ activePage = 'HOME' }) => {
     >
       <div
         className={`bg-[#2D2D2D] rounded-sm overflow-hidden transition-all duration-500 ease-out ${
-          isExpanded ? 'w-[280px]' : 'w-auto'
+          isExpanded ? 'w-[260px] md:w-[280px]' : 'w-auto'
         }`}
       >
         {/* Header - Always visible */}
-        <div className="flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-2">
-            <span className="text-text-dim text-sm tracking-wide">You are here:</span>
-            <span className="text-white text-sm font-medium tracking-wide uppercase">{activePage}</span>
+        <div className="flex items-center justify-between px-3 py-2 md:px-4 md:py-3">
+          <div className="flex items-center gap-1.5 md:gap-2">
+            <span className="text-text-dim text-xs md:text-sm tracking-wide">You are here:</span>
+            <span className="text-white text-xs md:text-sm font-medium tracking-wide uppercase">{activePage}</span>
           </div>
 
-          {/* 4 Dots Button */}
+          {/* 4 Dots Button - acts as toggle on mobile */}
           <button
-            onClick={(e) => {
-              e.stopPropagation()
-              setIsExpanded(false)
-            }}
-            className="grid grid-cols-2 gap-[3px] ml-4 hover:opacity-70 transition-opacity"
+            onClick={toggleExpanded}
+            className="grid grid-cols-2 gap-[2px] md:gap-[3px] ml-2 md:ml-4 hover:opacity-70 transition-opacity p-1"
+            aria-label={isExpanded ? 'Close menu' : 'Open menu'}
           >
-            <span className="w-[5px] h-[5px] bg-[#FF9D42] rounded-full" />
-            <span className="w-[5px] h-[5px] bg-[#FF9D42] rounded-full" />
-            <span className="w-[5px] h-[5px] bg-[#FF9D42] rounded-full" />
-            <span className="w-[5px] h-[5px] bg-[#FF9D42] rounded-full" />
+            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
+            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
+            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
+            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
           </button>
         </div>
 
@@ -74,11 +77,11 @@ const Nav = ({ activePage = 'HOME' }) => {
                   onClick={() => handleNavClick(link)}
                   onMouseEnter={() => setHoveredLink(link.id)}
                   onMouseLeave={() => setHoveredLink(null)}
-                  className={`relative flex items-center justify-between px-4 py-4 transition-all duration-300 text-left ${
+                  className={`relative flex items-center justify-between px-3 py-3 md:px-4 md:py-4 transition-all duration-300 text-left ${
                     hoveredLink === link.id ? 'bg-[#3D3D3D]' : 'bg-transparent'
                   }`}
                 >
-                  <span className={`text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
+                  <span className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
                     hoveredLink === link.id ? 'text-white' : 'text-[#CCCCCC]'
                   }`}>
                     {hoveredLink === link.id ? link.hoverLabel : link.label}
@@ -86,20 +89,21 @@ const Nav = ({ activePage = 'HOME' }) => {
 
                   {/* Active indicator - blue dot */}
                   {activePage === link.id && (
-                    <span className="w-[8px] h-[8px] bg-[#027FFF] rounded-full" />
+                    <span className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] bg-[#027FFF] rounded-full" />
                   )}
                 </button>
               ) : (
                 <Link
                   key={link.id}
                   href={link.href}
+                  onClick={() => setIsExpanded(false)}
                   onMouseEnter={() => setHoveredLink(link.id)}
                   onMouseLeave={() => setHoveredLink(null)}
-                  className={`relative flex items-center justify-between px-4 py-4 transition-all duration-300 ${
+                  className={`relative flex items-center justify-between px-3 py-3 md:px-4 md:py-4 transition-all duration-300 ${
                     hoveredLink === link.id ? 'bg-[#3D3D3D]' : 'bg-transparent'
                   }`}
                 >
-                  <span className={`text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
+                  <span className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
                     hoveredLink === link.id ? 'text-white' : 'text-[#CCCCCC]'
                   }`}>
                     {hoveredLink === link.id ? link.hoverLabel : link.label}
@@ -107,7 +111,7 @@ const Nav = ({ activePage = 'HOME' }) => {
 
                   {/* Active indicator - blue dot */}
                   {activePage === link.id && (
-                    <span className="w-[8px] h-[8px] bg-[#027FFF] rounded-full" />
+                    <span className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] bg-[#027FFF] rounded-full" />
                   )}
                 </Link>
               )

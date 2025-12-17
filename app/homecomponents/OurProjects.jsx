@@ -61,14 +61,14 @@ const OurProjects = () => {
   }
 
   return (
-    <section className="section-solid w-full py-20 px-8 md:px-16">
+    <section className="section-solid w-full py-12 md:py-20 px-4 sm:px-8 md:px-16">
       {/* Section Heading */}
-      <h2 className="text-white text-sm tracking-[0.2em] uppercase mb-12">
+      <h2 className="text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-8 md:mb-12">
         OUR PROJECTS
       </h2>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {projects.map((project, index) => (
           <CaseStudyCard
             key={index}

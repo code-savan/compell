@@ -7,7 +7,7 @@ import Nav from './Nav'
 const Header = ({ activePage = 'HOME' }) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-      <div className="flex items-start justify-between p-8">
+      <div className="flex items-start justify-between p-4 md:p-8">
         {/* Navigation */}
         <div className="pointer-events-auto">
           <Nav activePage={activePage} />
@@ -18,7 +18,7 @@ const Header = ({ activePage = 'HOME' }) => {
           <Image
             src="/logo.png"
             alt="Compell Logo"
-            className="w-[30px]"
+            className="w-[24px] md:w-[30px]"
             width={56}
             height={56}
             priority
