@@ -66,7 +66,7 @@ const Nav = ({ activePage = 'HOME' }) => {
     >
       <div
         className={`bg-[#2D2D2D] rounded-sm overflow-hidden transition-all duration-1000 ease-out ${
-          isWidthExpanded ? 'w-[270px] md:w-[450px]' : 'w-[200px] md:w-[250px]'
+          isWidthExpanded ? 'w-[270px] md:w-[450px]' : 'w-[200px] md:w-[270px]'
         }`}
       >
         {/* Header - Always visible */}

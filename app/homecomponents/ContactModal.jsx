@@ -57,7 +57,7 @@ const ContactModal = ({ isOpen, onClose }) => {
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto">
         <div
-          className="bg-background w-full max-w-2xl p-5 sm:p-8 md:p-12 transform transition-all duration-400 ease-out rounded-sm animate-scale-in relative my-auto"
+          className="bg-background w-full max-w-lg p-5 sm:p-8 md:p-12 px-8 md:px-20 transform transition-all duration-400 ease-out rounded-sm animate-scale-in relative my-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -75,7 +75,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               GET IN TOUCH
             </h2>
             <p className="text-text-dim text-sm md:text-base">
-              Let's talk about what you want to build.
+              Let&apos;s talk about what you want to build.
             </p>
           </div>
 

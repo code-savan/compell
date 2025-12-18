@@ -12,6 +12,8 @@ const Footer = () => {
   ]
 
   return (
+
+    <div className='w-full h-full bg-transparent p-20'>
     <footer className="section-solid w-full py-12 md:py-20 px-4 sm:px-8 md:px-16">
       {/* Main Content */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-12 mb-12 md:mb-16">
@@ -49,6 +51,7 @@ const Footer = () => {
         Compell Solutions 2025. All rights reserved.
       </p>
     </footer>
+    </div>
   )
 }
 
