@@ -13,7 +13,7 @@ export default function About() {
       {/* Fixed Background Image */}
       <div
         className="bg-fixed-image"
-        style={{ backgroundImage: "url('/about.png')" }}
+        style={{ backgroundImage: "url('/about.gif')" }}
       />
 
       {/* Fixed Header */}
