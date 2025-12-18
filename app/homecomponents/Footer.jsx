@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
 
-    <div className='w-full h-full bg-transparent md:p-20 p-4'>
+    <div className='w-full h-full bg-transparent md:p-16 p-4'>
     <footer className="section-solid w-full py-12 md:py-20 px-4 sm:px-8 md:px-16">
       {/* Main Content */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-12 mb-12 md:mb-16">
