@@ -18,12 +18,13 @@ const OurProjects = () => {
       logoAlt: "AjoPay Logo",
       link: "#",
       gallery: [
-        { bg: "#FFFFFF", image: "" },
-        { bg: "#F5E6D3", image: "" },
-        { bg: "#9B9BF7", image: "" },
-        { bg: "#9B9BF7", image: "" },
-        { bg: "#FFB769", image: "" },
-        { bg: "#6B8BF5", image: "" }
+        { bg: "#FFFFFF", image: "/case1.png" },
+        { bg: "#F5E6D3", image: "/case2.png" },
+        { bg: "#9B9BF7", image: "/case3.png" },
+        { bg: "#9B9BF7", image: "/case4.png" },
+        { bg: "#FFB769", image: "/case5.png" },
+        { bg: "#6B8BF5", image: "/case6.png" },
+        { bg: "#6B8BF5", image: "/case7.png" }
       ]
     },
     {
@@ -35,12 +36,13 @@ const OurProjects = () => {
       logoAlt: "Planorra Logo",
       link: "#",
       gallery: [
-        { bg: "#FFFFFF", image: "" },
-        { bg: "#E8E8FF", image: "" },
-        { bg: "#685EFF", image: "" },
-        { bg: "#685EFF", image: "" },
-        { bg: "#9B9BF7", image: "" },
-        { bg: "#685EFF", image: "" }
+        { bg: "#FFFFFF", image: "/caseA.png" },
+        { bg: "#FFFFFF", image: "/case2.png" },
+        { bg: "#E8E8FF", image: "/case3.png" },
+        { bg: "#685EFF", image: "/case4.png" },
+        { bg: "#685EFF", image: "/case5.svg" },
+        { bg: "#9B9BF7", image: "/case6.png" },
+        { bg: "#685EFF", image: "/case7.png" }
       ]
     }
   ]

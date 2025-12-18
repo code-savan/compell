@@ -18,7 +18,7 @@ const WhatWeDo = () => {
 
   return (
     <section className="section-solid w-full py-12 md:py-20 px-4 sm:px-8 md:px-16">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Top Section - Text on Left */}
         <div className="mb-8 md:mb-12">
           <h2 className="text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 md:mb-6">

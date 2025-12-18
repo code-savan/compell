@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Nav from './Nav'
+import Link from 'next/link'
 
 const Header = ({ activePage = 'HOME' }) => {
   return (
@@ -15,14 +16,16 @@ const Header = ({ activePage = 'HOME' }) => {
 
         {/* Logo */}
         <div className="pointer-events-auto">
-          <Image
-            src="/logo.png"
-            alt="Compell Logo"
-            className="w-[24px] md:w-[30px]"
-            width={56}
-            height={56}
-            priority
-          />
+          <Link href="/">
+            <Image
+              src="/logo.svg"
+              alt="Compell Logo"
+              className="w-[24px] md:w-[25px]"
+              width={56}
+              height={56}
+              priority
+            />
+          </Link>
         </div>
       </div>
     </header>

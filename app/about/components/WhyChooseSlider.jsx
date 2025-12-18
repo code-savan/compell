@@ -80,9 +80,11 @@ const WhyChooseSlider = () => {
       >
         <div className="flex gap-4 sm:gap-6 px-4 sm:px-8 md:px-16" style={{ width: 'max-content' }}>
           {slides.map((slide) => (
-            <div key={slide.id} className="flex flex-col w-[280px] sm:w-[350px] md:w-[400px] flex-shrink-0 bg-[#070101] rounded-md pb-4">
+            <div key={slide.id} className="flex flex-col
+            w-[280px] sm:w-[350px] md:w-[300px] flex-shrink-0
+            bg-[#070101] rounded-md p-1 h-fit">
               {/* Slide Image */}
-              <div className="w-full aspect-square bg-[#5A5A5A] border-2 border-[#333333] flex items-center justify-center overflow-hidden pointer-events-none">
+              <div className="w-full aspect-square bg-[#5A5A5A] rounded-sm flex items-center justify-center overflow-hidden pointer-events-none">
                 <Image
                   src={slide.image}
                   alt={slide.caption}
@@ -94,14 +96,14 @@ const WhyChooseSlider = () => {
               </div>
 
               {/* Slide Caption */}
-              <p className="text-text-dim text-xs sm:text-sm md:text-base mt-3 md:mt-4 h-fit leading-relaxed ml-3 pr-3">
+              <p className="text-text-dim text-xs sm:text-sm md:text-[14px] mt-3 md:mt-1 h-fit leading-relaxed ml-3 pr-3">
                 {slide.caption}
               </p>
             </div>
           ))}
 
           {/* Spacer at the end */}
-          <div className="w-4 sm:w-8 md:w-16 flex-shrink-0" />
+          <div className="w-1 flex-shrink-0" />
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ const OfferingCard = ({
   offerings = []
 }) => {
   return (
-    <div id={id} className="bg-[#2D2D2D] p-4 sm:p-6 md:p-8 flex flex-col">
+    <div id={id} className="bg-[#2D2D2D] p-4 sm:p-6 md:p-8 flex flex-col rounded-sm">
       {/* Title */}
       <h3 className="text-white text-base sm:text-lg md:text-xl tracking-wide mb-4 md:mb-6">
         {title}

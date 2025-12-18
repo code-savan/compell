@@ -128,9 +128,9 @@ const KeyOfferings = () => {
 
   return (
     <section ref={sectionRef} className="section-solid w-full min-h-screen">
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row gap-12">
         {/* Left Side - Sticky */}
-        <div className="lg:w-[45%] lg:sticky lg:top-0 lg:h-screen p-4 sm:p-8 md:p-16 flex flex-col justify-between">
+        <div className="lg:w-[50%] lg:sticky lg:top-0 lg:h-screen p-4 sm:p-8 md:p-16 flex flex-col justify-between">
           <div>
             {/* Section Heading */}
             <h2 className="text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6">
@@ -163,7 +163,7 @@ const KeyOfferings = () => {
         </div>
 
         {/* Right Side - Scrolling Cards */}
-        <div className="lg:w-[55%] flex flex-col gap-4 sm:gap-6 p-4 sm:p-8 md:p-16 lg:pl-0">
+        <div className="lg:w-[50%] flex flex-col gap-4 sm:gap-6 p-4 sm:p-8 md:p-16 lg:pl-0">
           {offerings.map((offering, index) => (
             <OfferingCard
               key={index}

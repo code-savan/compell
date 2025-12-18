@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { useContactModal } from '../context/ContactModalContext'
 
 const Nav = ({ activePage = 'HOME' }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [hoveredLink, setHoveredLink] = useState(null)
   const { openContactModal } = useContactModal()
 
@@ -21,26 +22,51 @@ const Nav = ({ activePage = 'HOME' }) => {
   const handleNavClick = (link) => {
     if (link.isModal) {
       openContactModal()
-      setIsExpanded(false)
+      setIsOpen(false)
+      setIsHovered(false)
     }
   }
 
-  const toggleExpanded = (e) => {
-    e.stopPropagation()
-    setIsExpanded(!isExpanded)
+  const handleNavContainerClick = () => {
+    // Only open on click if not already open (md+ behavior)
+    if (!isOpen) {
+      setIsOpen(true)
+    }
   }
+
+  const handleDotsClick = (e) => {
+    e.stopPropagation()
+    // Close everything when dots are clicked
+    setIsOpen(false)
+    setIsHovered(false)
+    setHoveredLink(null)
+  }
+
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    // Only collapse hover state if not clicked open
+    if (!isOpen) {
+      setIsHovered(false)
+      setHoveredLink(null)
+    }
+  }
+
+  // Determine if width should be expanded (either hovered or open)
+  const isWidthExpanded = isHovered || isOpen
 
   return (
     <nav
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => {
-        setIsExpanded(false)
-        setHoveredLink(null)
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleNavContainerClick}
+      className="cursor-pointer"
     >
       <div
-        className={`bg-[#2D2D2D] rounded-sm overflow-hidden transition-all duration-500 ease-out ${
-          isExpanded ? 'w-[260px] md:w-[280px]' : 'w-auto'
+        className={`bg-[#2D2D2D] rounded-sm overflow-hidden transition-all duration-1000 ease-out ${
+          isWidthExpanded ? 'w-[270px] md:w-[450px]' : 'w-[200px] md:w-[250px]'
         }`}
       >
         {/* Header - Always visible */}
@@ -50,23 +76,33 @@ const Nav = ({ activePage = 'HOME' }) => {
             <span className="text-white text-xs md:text-sm font-medium tracking-wide uppercase">{activePage}</span>
           </div>
 
-          {/* 4 Dots Button - acts as toggle on mobile */}
+          {/* 4 Dots Button */}
           <button
-            onClick={toggleExpanded}
-            className="grid grid-cols-2 gap-[2px] md:gap-[3px] ml-2 md:ml-4 hover:opacity-70 transition-opacity p-1"
-            aria-label={isExpanded ? 'Close menu' : 'Open menu'}
+            onClick={handleDotsClick}
+            className={`grid grid-cols-2 gap-[2px] md:gap-[3px] ml-2 md:ml-4 p-1 cursor-pointer transition-transform duration-1000 ease-out ${
+              isWidthExpanded ? 'rotate-180' : 'rotate-0'
+            }`}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
-            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
-            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
-            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
-            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] bg-[#FF9D42] rounded-full" />
+            <span className={`w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full transition-colors duration-500 ${
+              isWidthExpanded ? 'bg-[#FF9D42]' : 'bg-[#888888]'
+            }`} />
+            <span className={`w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full transition-colors duration-500 ${
+              isWidthExpanded ? 'bg-[#FF9D42]' : 'bg-[#888888]'
+            }`} />
+            <span className={`w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full transition-colors duration-500 ${
+              isWidthExpanded ? 'bg-[#FF9D42]' : 'bg-[#888888]'
+            }`} />
+            <span className={`w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full transition-colors duration-500 ${
+              isWidthExpanded ? 'bg-[#FF9D42]' : 'bg-[#888888]'
+            }`} />
           </button>
         </div>
 
-        {/* Expandable Nav Links */}
+        {/* Expandable Nav Links - Only shown when clicked open */}
         <div
           className={`overflow-hidden transition-all duration-500 ease-out ${
-            isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+            isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="flex flex-col py-2">
@@ -96,7 +132,10 @@ const Nav = ({ activePage = 'HOME' }) => {
                 <Link
                   key={link.id}
                   href={link.href}
-                  onClick={() => setIsExpanded(false)}
+                  onClick={() => {
+                    setIsOpen(false)
+                    setIsHovered(false)
+                  }}
                   onMouseEnter={() => setHoveredLink(link.id)}
                   onMouseLeave={() => setHoveredLink(null)}
                   className={`relative flex items-center justify-between px-3 py-3 md:px-4 md:py-4 transition-all duration-300 ${
