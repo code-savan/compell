@@ -182,7 +182,7 @@ const CaseStudySheet = ({
               {/* Row 5: Two columns (70% / 30%) */}
               <div className="flex gap-3 md:gap-4 h-[300px]">
                 <div
-                  className="w-[65%] aspect-[16/9]"
+                  className="w-full aspect-video"
                   style={{ backgroundColor: project.gallery?.[5]?.bg || '#FFB769' }}
                 >
                   {project.gallery?.[5]?.image && (
@@ -196,7 +196,7 @@ const CaseStudySheet = ({
                     </div>
                   )}
                 </div>
-                <div
+                {/* <div
                   className="w-[35%] aspect-[9/16]"
                   style={{ backgroundColor: project.gallery?.[6]?.bg || '#6B8BF5' }}
                 >
@@ -210,7 +210,7 @@ const CaseStudySheet = ({
                       />
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
