@@ -270,7 +270,7 @@ const CaseStudySheet = ({
                 </div>
 
                 {/* Row 5: Two columns (70% / 30%) */}
-                <div className="flex gap-3 md:gap-4 h-[300px]">
+                <div className="flex gap-3 md:gap-4 h-[300px]">  
                   <div
                     className="w-full aspect-video"
                     style={{ backgroundColor: project.gallery?.[5]?.bg || '#FFB769' }}
