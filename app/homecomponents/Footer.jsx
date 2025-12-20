@@ -6,9 +6,9 @@ import GetInTouchButton from './GetInTouchButton'
 
 const Footer = () => {
   const socialLinks = [
-    { name: "Instagram", url: "#" },
-    { name: "LinkedIn", url: "#" },
-    { name: "Facebook", url: "#" }
+    { name: "Instagram", url: "https://www.instagram.com/compellsolutionss?igsh=MWhnNW90c3UwY3pvcg==" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/company/compell-solutions/" },
+    // { name: "Facebook", url: "#" }
   ]
 
   return (
