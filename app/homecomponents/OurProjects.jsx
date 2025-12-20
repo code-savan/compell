@@ -35,14 +35,13 @@ const OurProjects = () => {
       logo: "/project2.png",
       logoAlt: "Planorra Logo",
       link: "#",
+      layout: "planorra", // Custom layout: square+square, rectangle, bigger rectangle, rectangle
       gallery: [
         { bg: "#FFFFFF", image: "/caseA.png" },
-        { bg: "#FFFFFF", image: "/case2.png" },
-        { bg: "#E8E8FF", image: "/case3.png" },
-        { bg: "#685EFF", image: "/case4.png" },
-        { bg: "#685EFF", image: "/case5.svg" },
-        { bg: "#9B9BF7", image: "/case6.png" },
-        { bg: "#685EFF", image: "/case7.png" }
+        { bg: "#FFFFFF", image: "/caseB.png" },
+        { bg: "#E8E8FF", image: "/caseC.png" },
+        { bg: "#685EFF", image: "/caseD.png" },
+        { bg: "#685EFF", image: "/caseE.png" }
       ]
     }
   ]

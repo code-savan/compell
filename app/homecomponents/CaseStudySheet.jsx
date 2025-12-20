@@ -93,47 +93,50 @@ const CaseStudySheet = ({
 
           {/* Right Side - Image Gallery */}
           <div className="w-full md:w-[60%] overflow-y-auto p-4 md:p-6 flex-1">
-            <div className="flex flex-col gap-3 md:gap-4">
-              {/* Row 1: One square div - First gallery image */}
-              <div
-                className="w-full aspect-square"
-                style={{ backgroundColor: project.gallery?.[0]?.bg || project.bgColor }}
-              >
-                {project.gallery?.[0]?.image && (
-                  <div className="w-full h-full relative">
-                    <Image
-                      src={project.gallery[0].image}
-                      alt="Gallery image 1"
-                      fill
-                      className="object-cover"
-                    />
+            {/* Planorra Layout: square+square, rectangle, bigger rectangle, rectangle */}
+            {project.layout === 'planorra' ? (
+              <div className="flex flex-col gap-3 md:gap-4">
+                {/* Row 1: Two squares side by side */}
+                <div className=" gap-3 md:gap-4 space-y-4">
+                  <div
+                    className="w-full aspect-square"
+                    style={{ backgroundColor: project.gallery?.[0]?.bg || '#FFFFFF' }}
+                  >
+                    {project.gallery?.[0]?.image && (
+                      <div className="w-full h-full relative">
+                        <Image
+                          src={project.gallery[0].image}
+                          alt="Gallery image 1"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-
-              {/* Row 2: Two columns */}
-              <div className="flex gap-3 md:gap-4">
-                <div
-                  className="w-1/2 aspect-square"
-                  style={{ backgroundColor: project.gallery?.[1]?.bg || '#FFFFFF' }}
-                >
-                  {project.gallery?.[1]?.image && (
-                    <div className="w-full h-[450px] relative">
-                      <Image
-                        src={project.gallery[1].image}
-                        alt="Gallery image 2"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
+                  <div
+                    className="w-full aspect-square"
+                    style={{ backgroundColor: project.gallery?.[1]?.bg || '#FFFFFF' }}
+                  >
+                    {project.gallery?.[1]?.image && (
+                      <div className="w-full h-full relative">
+                        <Image
+                          src={project.gallery[1].image}
+                          alt="Gallery image 2"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
+
+                {/* Row 2: Rectangle */}
                 <div
-                  className="w-1/2 aspect-square"
-                  style={{ backgroundColor: project.gallery?.[2]?.bg || '#F5E6D3' }}
+                  className="w-full aspect-[2/1]"
+                  style={{ backgroundColor: project.gallery?.[2]?.bg || '#E8E8FF' }}
                 >
                   {project.gallery?.[2]?.image && (
-                    <div className="w-full h-[450px] relative">
+                    <div className="w-full h-full relative">
                       <Image
                         src={project.gallery[2].image}
                         alt="Gallery image 3"
@@ -143,76 +146,149 @@ const CaseStudySheet = ({
                     </div>
                   )}
                 </div>
-              </div>
 
-              {/* Row 3: Rectangle div */}
-              <div
-                className="w-full aspect-[2/1]"
-                style={{ backgroundColor: project.gallery?.[3]?.bg || '#9B9BF7' }}
-              >
-                {project.gallery?.[3]?.image && (
-                  <div className="w-full h-full relative">
-                    <Image
-                      src={project.gallery[3].image}
-                      alt="Gallery image 4"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Row 4: Bigger rectangle div */}
-              <div
-                className="w-full aspect-[4/3]"
-                style={{ backgroundColor: project.gallery?.[4]?.bg || '#9B9BF7' }}
-              >
-                {project.gallery?.[4]?.image && (
-                  <div className="w-full h-full relative">
-                    <Image
-                      src={project.gallery[4].image}
-                      alt="Gallery image 5"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Row 5: Two columns (70% / 30%) */}
-              <div className="flex gap-3 md:gap-4 h-[300px]">
+                {/* Row 3: Bigger rectangle */}
                 <div
-                  className="w-full aspect-video"
-                  style={{ backgroundColor: project.gallery?.[5]?.bg || '#FFB769' }}
+                  className="w-full aspect-[4/3]"
+                  style={{ backgroundColor: project.gallery?.[3]?.bg || '#685EFF' }}
                 >
-                  {project.gallery?.[5]?.image && (
+                  {project.gallery?.[3]?.image && (
                     <div className="w-full h-full relative">
                       <Image
-                        src={project.gallery[5].image}
-                        alt="Gallery image 6"
+                        src={project.gallery[3].image}
+                        alt="Gallery image 4"
                         fill
                         className="object-cover"
                       />
                     </div>
                   )}
                 </div>
-                {/* <div
-                  className="w-[35%] aspect-[9/16]"
-                  style={{ backgroundColor: project.gallery?.[6]?.bg || '#6B8BF5' }}
+
+                {/* Row 4: Rectangle */}
+                <div
+                  className="w-full aspect-[2/1]"
+                  style={{ backgroundColor: project.gallery?.[4]?.bg || '#685EFF' }}
                 >
-                  {project.gallery?.[6]?.image && (
+                  {project.gallery?.[4]?.image && (
                     <div className="w-full h-full relative">
                       <Image
-                        src={project.gallery[6].image}
-                        alt="Gallery image 7"
+                        src={project.gallery[4].image}
+                        alt="Gallery image 5"
                         fill
                         className="object-cover"
                       />
                     </div>
                   )}
-                </div> */}
+                </div>
               </div>
-            </div>
+            ) : (
+              /* Default Layout for other projects */
+              <div className="flex flex-col gap-3 md:gap-4">
+                {/* Row 1: One square div - First gallery image */}
+                <div
+                  className="w-full aspect-square"
+                  style={{ backgroundColor: project.gallery?.[0]?.bg || project.bgColor }}
+                >
+                  {project.gallery?.[0]?.image && (
+                    <div className="w-full h-full relative">
+                      <Image
+                        src={project.gallery[0].image}
+                        alt="Gallery image 1"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Row 2: Two columns */}
+                <div className="flex gap-3 md:gap-4">
+                  <div
+                    className="w-1/2 aspect-square"
+                    style={{ backgroundColor: project.gallery?.[1]?.bg || '#FFFFFF' }}
+                  >
+                    {project.gallery?.[1]?.image && (
+                      <div className="w-full h-[450px] relative">
+                        <Image
+                          src={project.gallery[1].image}
+                          alt="Gallery image 2"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div
+                    className="w-1/2 aspect-square"
+                    style={{ backgroundColor: project.gallery?.[2]?.bg || '#F5E6D3' }}
+                  >
+                    {project.gallery?.[2]?.image && (
+                      <div className="w-full h-[450px] relative">
+                        <Image
+                          src={project.gallery[2].image}
+                          alt="Gallery image 3"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Row 3: Rectangle div */}
+                <div
+                  className="w-full aspect-[2/1]"
+                  style={{ backgroundColor: project.gallery?.[3]?.bg || '#9B9BF7' }}
+                >
+                  {project.gallery?.[3]?.image && (
+                    <div className="w-full h-full relative">
+                      <Image
+                        src={project.gallery[3].image}
+                        alt="Gallery image 4"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Row 4: Bigger rectangle div */}
+                <div
+                  className="w-full aspect-[4/3]"
+                  style={{ backgroundColor: project.gallery?.[4]?.bg || '#9B9BF7' }}
+                >
+                  {project.gallery?.[4]?.image && (
+                    <div className="w-full h-full relative">
+                      <Image
+                        src={project.gallery[4].image}
+                        alt="Gallery image 5"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Row 5: Two columns (70% / 30%) */}
+                <div className="flex gap-3 md:gap-4 h-[300px]">
+                  <div
+                    className="w-full aspect-video"
+                    style={{ backgroundColor: project.gallery?.[5]?.bg || '#FFB769' }}
+                  >
+                    {project.gallery?.[5]?.image && (
+                      <div className="w-full h-full relative">
+                        <Image
+                          src={project.gallery[5].image}
+                          alt="Gallery image 6"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
